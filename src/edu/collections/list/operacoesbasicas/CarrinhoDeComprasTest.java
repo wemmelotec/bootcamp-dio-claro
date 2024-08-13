@@ -15,6 +15,17 @@ public class CarrinhoDeComprasTest {
 		carrinhoDeCompras.adicionarItemALista(item3);
 		
 		carrinhoDeCompras.exibirItensDoCarrinho();
+		System.out.println("****************************************");
+		
+	//	carrinhoDeCompras.removerItemDaLista("Arroz");
+		carrinhoDeCompras.removerItemDaLista("Feijao");
+		
+		carrinhoDeCompras.exibirItensDoCarrinho();
+		System.out.println("****************************************");
+		System.out.println("Valor total das compras!");
+		System.out.println(carrinhoDeCompras.calcularValorTotal());
+		
+		
 	}
 
 }

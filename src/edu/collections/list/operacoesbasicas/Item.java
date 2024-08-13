@@ -37,8 +37,7 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "Item [nomeDoItem=" + nomeDoItem + ", precoDoItem=" + precoDoItem + ", quantidadeDeItens="
-				+ quantidadeDeItens + "]";
+		return "Nome do item: " + nomeDoItem + ", Preço do item: " + precoDoItem + ", Quantidade do item: " + quantidadeDeItens;
 	}
 	
 	

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarrinhoDeCompras {
+
 	private List<Item> listaDeItens;
 
 	public CarrinhoDeCompras() {
@@ -11,40 +12,56 @@ public class CarrinhoDeCompras {
 	}
 
 	public void adicionarItemALista(Item novoItem) {
-		// saber se já existe
-		// adicionar o item ou aumentar a quantidade
-		// listaDeItens.add(novoItem);
-		boolean itemExiste = false;
-
-		for (Item item : listaDeItens) {
-			if (item.getNomeDoItem().equals(novoItem.getNomeDoItem())) {
-				item.setQuantidadeDeItens(item.getQuantidadeDeItens() + novoItem.getQuantidadeDeItens());
-				itemExiste = true;
-				break;
-			}
-		}
-
-		if (!itemExiste) {
-			listaDeItens.add(novoItem);
-		}
+		Item item = new Item(novoItem.getNomeDoItem(), novoItem.getPrecoDoItem(), novoItem.getQuantidadeDeItens());
+		listaDeItens.add(item);
 	}
 
-	public void removerItemDaLista() {
-		// implementar
-		
+	public void removerItemDaLista(String nome) {
+
+		List<Item> itensParaRemover = new ArrayList<>();
+
+		if (!listaDeItens.isEmpty()) {
+			for (Item item : listaDeItens) {
+
+				if (item.getNomeDoItem().equalsIgnoreCase(nome)) {
+					itensParaRemover.add(item);
+				}
+			}
+
+			listaDeItens.removeAll(itensParaRemover);
+
+		} else {
+			System.out.println("A lista está vazia!");
+		}
 	}
 
 	public Double calcularValorTotal() {
-		// implementar
-		return 0.5;
+		double valorTotal = 0d;
+		
+		if (!listaDeItens.isEmpty()) {
+			for (Item item : listaDeItens) {
+				double valorItem = item.getPrecoDoItem() * item.getQuantidadeDeItens();
+				valorTotal += valorItem;
+			}
+			return valorTotal;
+		} else {
+			throw new RuntimeException("A lista está vazia!");
+		}
 	}
 
 	public void exibirItensDoCarrinho() {
-		// implementar
-		for (Item item : listaDeItens) {
-			System.out.println(item);
+		if (!listaDeItens.isEmpty()) {
+
+			StringBuilder sb = new StringBuilder();
+			for (Item item : listaDeItens) {
+				sb.append(item.toString()).append("\n");
+			}
+
+			System.out.println(sb.toString());
+
+		} else {
+			System.out.println("A lista está vazia!");
 		}
-		// return null;
 
 	}
 }
