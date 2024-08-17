@@ -53,6 +53,7 @@ public class CarrinhoDeCompras {
 		if (!listaDeItens.isEmpty()) {
 
 			StringBuilder sb = new StringBuilder();
+			
 			for (Item item : listaDeItens) {
 				sb.append(item.toString()).append("\n");
 			}
